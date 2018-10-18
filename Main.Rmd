@@ -27,3 +27,9 @@ Load the required packages:
 library(iterators)
 library(rcdk)
 library(doParallel)
+
+# Import data
+Import the Structure Data File (SDF) (aid624202.sdf file) using an iterating reader to go through every molecule one by one and add it to a list of molecules
+```{r}
+# import the .sdf file
+iter = iload.molecules('C:/Users/Lian/Desktop/CloudStation/MSB1015 Scientific Programming/Assignments/3 Parallel Computing/aid624202.sdf', type='sdf')
