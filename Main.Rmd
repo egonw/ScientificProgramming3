@@ -1,0 +1,29 @@
+---
+title: 'MSB1015: Scientific Programming- Assignment 3 Parallel Computing'
+author: "Lian Laudy"
+date: "18 oktober 2018"
+output: html_document
+---
+
+# Load packages
+
+To make sure `rcdk` has enough memory, we can increase the heap space with an extra `options()` command. Make
+sure the amount of heap space you allocate is not larger than the amount of physical memory your machine has (`4g` is 4 GB, which will be fine if your machine has 8 GB of memory):
+```{r}
+options(java.parameters = "-Xmx4g")
+```
+
+Check if the required packages are already installed. If not, install them:
+```{r, echo = FALSE}
+packages = c("iterators", "rcdk", "doParallel")
+if (length(setdiff(packages, rownames(installed.packages()))) > 0) {
+  install.packages(setdiff(packages, rownames(installed.packages())))  
+}
+```
+
+Load the required packages:
+```{r}
+# the package 'iterators' is used for proper nextElem() support
+library(iterators)
+library(rcdk)
+library(doParallel)
