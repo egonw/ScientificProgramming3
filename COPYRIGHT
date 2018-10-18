@@ -1,0 +1,11 @@
+DATA
+The data used in this script is publicly available 
+and can be in the PubChem database (Pubchem ID 624202):
+https://pubchem.ncbi.nlm.nih.gov/bioassay/624202#section=Top.
+
+RSTUDIO
+The software Rstudio was used to generate a RMarkdown file. 
+Due to the public license of Rstudio, no copyright is needed.
+
+PACKAGES
+The following packages that are used in the script:
