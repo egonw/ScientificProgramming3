@@ -1,5 +1,5 @@
 ---
-title: 'MSB1015: Scientific Programming - Assignment 3 Parallel Computing'
+title: "MSB1015: Scientific Programming - Assignment 3 Parallel Computing"
 author: "Lian Laudy"
 date: "19 oktober 2018"
 output: html_document
@@ -22,7 +22,7 @@ if (length(setdiff(packages, rownames(installed.packages()))) > 0) {
 ```
 
 Load the required packages:
-```{r}
+```{r, echo = FALSE}
 # the package 'iterators' is used for proper nextElem() support
 library(iterators)
 library(rcdk)
@@ -32,7 +32,7 @@ library(doParallel)
 # Import data
 
 Import the Structure Data File (SDF) (aid624202.sdf file) using an iterating reader to go through every molecule one by one and add it to a list of molecules
-```{r}
+```{r, echo = FALSE}
 # import the .sdf file
 iter = iload.molecules('C:/Users/Lian/Desktop/CloudStation/MSB1015 Scientific Programming/Assignments/3 Parallel Computing/aid624202.sdf', type='sdf')
 
@@ -58,7 +58,6 @@ while(hasNext(iter)) {
   # update pogress bar
   setTxtProgressBar(pb, count)
   
-
   if (count == import_mol) {
     break
   }
@@ -67,7 +66,7 @@ close(pb)
 ```
 # Compute molecular descriptors in parallel 
 
-```{r}
+```{r, echo = FALSE}
 # detect the number of the computer's cores
 num_cores = detectCores() - 1
 
@@ -84,6 +83,7 @@ mol_smiles = lapply(unlist(mols),get.smiles)
 time = list()
 
 # using a for-loop, the calculation of molecular descriptors is performed using various numbers of cores. The duration of that each calculation takes will be stored
+
 for(i in 1:num_cores){
   
   # generate a cluster
