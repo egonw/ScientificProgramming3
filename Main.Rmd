@@ -1,13 +1,13 @@
 ---
 title: 'MSB1015: Scientific Programming- Assignment 3 Parallel Computing'
 author: "Lian Laudy"
-date: "18 oktober 2018"
+date: "19 oktober 2018"
 output: html_document
 ---
 
 # Load packages
 
-To make sure `rcdk` has enough memory, we can increase the heap space with an extra `options()` command. Make
+To make sure rcdk function has enough memory, we can increase the heap space with an extra `options()` command. Make
 sure the amount of heap space you allocate is not larger than the amount of physical memory your machine has (`4g` is 4 GB, which will be fine if your machine has 8 GB of memory):
 ```{r}
 options(java.parameters = "-Xmx4g")
@@ -27,9 +27,41 @@ Load the required packages:
 library(iterators)
 library(rcdk)
 library(doParallel)
+```
 
 # Import data
+
 Import the Structure Data File (SDF) (aid624202.sdf file) using an iterating reader to go through every molecule one by one and add it to a list of molecules
 ```{r}
 # import the .sdf file
 iter = iload.molecules('C:/Users/Lian/Desktop/CloudStation/MSB1015 Scientific Programming/Assignments/3 Parallel Computing/aid624202.sdf', type='sdf')
+
+# number of molecules that will be imported
+import_mol = 20
+
+# create an empty list in which the molecules will stored
+mols = list()
+
+# generate a progress bar  
+pb = txtProgressBar(min = 0, max = import_mol, style = 3)
+
+# define a counter
+count = 0
+
+while(hasNext(iter)) {
+  # increase count with one
+  count = count + 1
+  
+  # store selected molecule in the list
+  mols[[count]] = nextElem(iter)   
+  
+  # update pogress bar
+  setTxtProgressBar(pb, count)
+  
+
+  if (count == import_mol) {
+    break
+  }
+}
+close(pb)
+```
