@@ -1,5 +1,5 @@
 ---
-title: 'MSB1015: Scientific Programming- Assignment 3 Parallel Computing'
+title: 'MSB1015: Scientific Programming - Assignment 3 Parallel Computing'
 author: "Lian Laudy"
 date: "19 oktober 2018"
 output: html_document
