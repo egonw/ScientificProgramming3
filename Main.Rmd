@@ -101,3 +101,8 @@ for(i in 1:num_cores){
   stopCluster(cl)
 }
 ```
+
+# Result
+```{r}
+plot(unlist(time),xlab="Number of cores",ylab="Time [s]",main=paste0("Duration to calculate descriptors of ",n," molecules"),type='b')
+```
