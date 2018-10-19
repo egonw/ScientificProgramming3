@@ -37,7 +37,7 @@ Import the Structure Data File (SDF) (aid624202.sdf file) using an iterating rea
 iter = iload.molecules('C:/Users/Lian/Desktop/CloudStation/MSB1015 Scientific Programming/Assignments/3 Parallel Computing/aid624202.sdf', type='sdf')
 
 # number of molecules that will be imported
-import_mol = 20
+import_mol = 2000
 
 # create an empty list in which the molecules will stored
 mols = list()
