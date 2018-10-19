@@ -104,5 +104,5 @@ for(i in 1:num_cores){
 
 # Result
 ```{r}
-plot(unlist(time),xlab="Number of cores",ylab="Time [s]",main=paste0("Duration to calculate descriptors of ",n," molecules"),type='b')
+plot(unlist(time),xlab="Number of cores",ylab="Time [s]",main=paste0("Duration to calculate descriptors of ",import_mol," molecules"),type='b')
 ```
