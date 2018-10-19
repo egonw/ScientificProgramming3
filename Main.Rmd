@@ -82,3 +82,22 @@ mol_smiles = lapply(unlist(mols),get.smiles)
 
 # create a list that will store the number of seconds that each calculation takes
 time = list()
+
+# using a for-loop, the calculation of molecular descriptors is performed using various numbers of cores. The duration of that each calculation takes will be stored
+for(i in 1:num_cores){
+  
+  # generate a cluster
+  cl = makeCluster(i)
+  
+  # descriptor names and molecule smiles are exported to each core
+  clusterExport(cl,"desc_names") 
+  clusterExport(cl,"mol_smiles")
+  
+  # load the required packages to each core
+  clusterEvalQ(cl, library(rcdk, parallel))
+  registerDoParallel(cl) 
+  time[i] = system.time(foreach(x=1:import_mol,.combine=rbind) %dopar% eval.desc(parse.smiles(mol_smiles[[x]]),desc_names))
+  setTxtProgressBar(pb, i)
+  stopCluster(cl)
+}
+```
