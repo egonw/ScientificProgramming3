@@ -65,3 +65,20 @@ while(hasNext(iter)) {
 }
 close(pb)
 ```
+# Compute molecular descriptors in parallel 
+
+```{r}
+# detect the number of the computer's cores
+num_cores = detectCores() - 1
+
+# create an array of the names of descriptors that will be calculated
+desc_names = unique(unlist(sapply(get.desc.categories()[2:4], get.desc.names)))
+
+# generate a progress bar
+pb = txtProgressBar(min = 0, max = num_cores, style = 3)
+
+# the molecules are converted into smiles using the get.smiles function
+mol_smiles = lapply(unlist(mols),get.smiles)
+
+# create a list that will store the number of seconds that each calculation takes
+time = list()
