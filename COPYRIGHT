@@ -10,6 +10,6 @@ Due to the public license of Rstudio, no copyright is needed.
 PACKAGES
 The following packages that are used in the script:
   - iterators: More information can be found on https://cran.r-project.org/web/packages/iterators/iterators.pdf.
-  - rdck: More information can be found on https://cran.r-project.org/web/packages/rcdk/rcdk.pdf.
+  - rcdk: More information can be found on https://cran.r-project.org/web/packages/rcdk/rcdk.pdf.
   - doParallel: More information can be found on https://cran.r-project.org/web/packages/doParallel/doParallel.pdf.
 
